@@ -51,17 +51,29 @@ function playround(playerChoice,cpuChoice)
         if(playerChoice==='rock' && cpuChoice==='paper')
         {
             alert('Computer Wins');
+            cpuScore++;
         }
         else if(playerChoice==='paper' && cpuChoice==='scissors')
         {
             alert('Computer Wins');
+            cpuScore++;
         }
         else if(playerChoice==='scissors' && cpuChoice==='rock')
         {
             alert('Computer Wins');
+            cpuScore++;
         }
         else
             alert('Player Wins');
+            playerScore++;
     }
 }
-playround(processInput(getPlayerChoice()),getComputerChoice());
+function playGame(num)
+{
+    for(let i=0;i<num;i++)
+    {
+        playround(processInput(getPlayerChoice()),getComputerChoice());
+    }
+}
+let rounds = prompt('Specify number of rounds to play!')
+playGame(rounds);
