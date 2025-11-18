@@ -1,5 +1,6 @@
 console.log("File linked succesfully");
 let playerScore = 0;
+let cpuScore = 0;
 function getComputerChoice()
 {
     let compChoice = Math.floor(Math.random()*3)
@@ -18,7 +19,7 @@ function getComputerChoice()
             console.log('Error creating random number less than 3');
 
     }
-    console.log(compChoice);
+    return compChoice;
 }
 function  getPlayerChoice()
 {
@@ -28,14 +29,39 @@ function  getPlayerChoice()
 function processInput(choice)
 {
     choice = choice.toLowerCase();
-    console.log(`Player choice is ${choice}`);
-    if (choice !=='rock' && choice &&'paper' && choice !='scissors')
+    
+    while (choice !=='rock' && choice !=='paper' && choice !='scissors')
     {
-        alert('Invalide Input provide input again');
-        processInput(getPlayerChoice());
+        alert('Invalid Choice');
+        choice=getPlayerChoice();
+    }
+    return choice;
+    
+}
+function playround(playerChoice,cpuChoice)
+{
+    console.log(`Player choice is ${playerChoice}`);
+    console.log(`Computer choice is ${cpuChoice}`);
+    if(playerChoice===cpuChoice)
+    {
+        alert('Tie');
     }
     else
-        return;
+    {
+        if(playerChoice==='rock' && cpuChoice==='paper')
+        {
+            alert('Computer Wins');
+        }
+        else if(playerChoice==='paper' && cpuChoice==='scissors')
+        {
+            alert('Computer Wins');
+        }
+        else if(playerChoice==='scissors' && cpuChoice==='rock')
+        {
+            alert('Computer Wins');
+        }
+        else
+            alert('Player Wins');
     }
-getComputerChoice();
-processInput(getPlayerChoice());
+}
+playround(processInput(getPlayerChoice()),getComputerChoice());
