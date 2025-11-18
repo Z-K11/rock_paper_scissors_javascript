@@ -1,6 +1,4 @@
 console.log("File linked succesfully");
-let playerScore = 0;
-let cpuScore = 0;
 function getComputerChoice()
 {
     let compChoice = Math.floor(Math.random()*3)
@@ -40,6 +38,8 @@ function processInput(choice)
 }
 function playround(playerChoice,cpuChoice)
 {
+    let playerScore = 0;
+    let cpuScore = 0;
     console.log(`Player choice is ${playerChoice}`);
     console.log(`Computer choice is ${cpuChoice}`);
     if(playerChoice===cpuChoice)
@@ -64,9 +64,12 @@ function playround(playerChoice,cpuChoice)
             cpuScore++;
         }
         else
+        {
             alert('Player Wins');
             playerScore++;
+        }
     }
+    alert(`Player score : ${playerScore} Cpu Score : ${cpuScore}`);
 }
 function playGame(num)
 {
@@ -75,5 +78,14 @@ function playGame(num)
         playround(processInput(getPlayerChoice()),getComputerChoice());
     }
 }
-let rounds = prompt('Specify number of rounds to play!')
-playGame(rounds);
+function numberOfRounds()
+{
+    let rounds=NaN;
+    while(Number.isNaN(rounds))
+        {
+            rounds = parseInt(prompt('Specify number of rounds to play!'));
+            console.log(Number.isNaN(rounds));
+        }
+    return rounds;
+}
+playGame(numberOfRounds());
