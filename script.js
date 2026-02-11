@@ -3,6 +3,7 @@ const playerInput = document.querySelector("#choice");
     let playerScore = 0;
     let cpuScore = 0;
     const display = document.querySelector("#displayScore");
+    const displayDecision = document.querySelector("#decision");
 function getComputerChoice()
 {
     let compChoice = Math.floor(Math.random()*3)
@@ -29,32 +30,32 @@ function playround(playerChoice,cpuChoice)
     console.log(`Computer choice is ${cpuChoice}`);
     if(playerChoice===cpuChoice)
     {
-        alert('Tie');
+        displayDecision.textContent = "Tie";
     }
     else
     {
         if(playerChoice==='rock' && cpuChoice==='paper')
         {
-            alert('Computer Wins');
+        displayDecision.textContent = "Computer Wins";
             cpuScore++;
         }
         else if(playerChoice==='paper' && cpuChoice==='scissors')
         {
-            alert('Computer Wins');
+            displayDecision.textContent = "Computer Wins";
             cpuScore++;
         }
         else if(playerChoice==='scissors' && cpuChoice==='rock')
         {
-            alert('Computer Wins');
+            displayDecision.textContent = "Computer Wins";
             cpuScore++;
         }
         else
         {
-            alert('Player Wins');
+            displayDecision.textContent = "Player Wins";        
             playerScore++;
         }
     }
-    alert(`Player score : ${playerScore} Cpu Score : ${cpuScore}`);
+    display.textContent = `Player score : ${playerScore} Cpu Score : ${cpuScore}`;
 }
 playerInput.addEventListener('click',event =>
 {
