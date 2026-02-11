@@ -1,6 +1,8 @@
 console.log("File linked succesfully");
+const playerInput = document.querySelector("#choice");
     let playerScore = 0;
     let cpuScore = 0;
+    const display = document.querySelector("#displayScore");
 function getComputerChoice()
 {
     let compChoice = Math.floor(Math.random()*3)
@@ -20,23 +22,6 @@ function getComputerChoice()
 
     }
     return compChoice;
-}
-function  getPlayerChoice()
-{
-    let choice = prompt('Input \'Rock\',\'Paper\' or \'Scissors\'');
-    return choice;
-}
-function processInput(choice)
-{
-    choice = choice.toLowerCase();
-    
-    while (choice !=='rock' && choice !=='paper' && choice !='scissors')
-    {
-        alert('Invalid Choice');
-        choice=getPlayerChoice();
-    }
-    return choice;
-    
 }
 function playround(playerChoice,cpuChoice)
 {
@@ -71,15 +56,33 @@ function playround(playerChoice,cpuChoice)
     }
     alert(`Player score : ${playerScore} Cpu Score : ${cpuScore}`);
 }
-function playGame(num)
+playerInput.addEventListener('click',event =>
 {
-    for(let i=0;i<num;i++)
-    {
-        playround(processInput(getPlayerChoice()),getComputerChoice());
+    const playerInputId = event.target;
+    switch (playerInputId.id) {
+        case 'rock':
+            playerMove = 'rock';
+            break;
+        case 'paper':
+
+            playerMove = 'paper';
+            break;
+        case 'scissors':
+
+            playerMove = 'scissors';
+            break;
+        default:
+            console.log("Error at event handler");
+            break;
     }
-}
-function numberOfRounds()
-{
+    compChoice = getComputerChoice();
+        playround(playerMove,compChoice);
+});
+
+//function playGame(num)
+
+//function numberOfRounds()
+/* {
     let rounds=NaN;
     while(Number.isNaN(rounds))
         {
@@ -88,4 +91,4 @@ function numberOfRounds()
         }
     return rounds;
 }
-playGame(numberOfRounds());
+playGame(numberOfRounds()); */
