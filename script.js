@@ -36,22 +36,22 @@ function playround(playerChoice,cpuChoice)
     {
         if(playerChoice==='rock' && cpuChoice==='paper')
         {
-        displayDecision.textContent = "Computer Wins";
+        displayDecision.textContent = "Computer Wins the round";
             cpuScore++;
         }
         else if(playerChoice==='paper' && cpuChoice==='scissors')
         {
-            displayDecision.textContent = "Computer Wins";
+            displayDecision.textContent = "Computer Wins the round";
             cpuScore++;
         }
         else if(playerChoice==='scissors' && cpuChoice==='rock')
         {
-            displayDecision.textContent = "Computer Wins";
+            displayDecision.textContent = "Computer Wins the round";
             cpuScore++;
         }
         else
         {
-            displayDecision.textContent = "Player Wins";        
+            displayDecision.textContent = "Player Wins the round";        
             playerScore++;
         }
     }
@@ -77,19 +77,16 @@ playerInput.addEventListener('click',event =>
             break;
     }
     compChoice = getComputerChoice();
+    if(playerScore!=5 && cpuScore!=5)
         playround(playerMove,compChoice);
+    if (playerScore === 5)
+    {
+        displayDecision.textContent = "Player wins the game";
+        alert('Player Wins the game');
+    }
+    if (cpuScore===5)
+    {
+        displayDecision.textContent = "Player wins the game";
+        alert("Cpu Wins the game");
+    }
 });
-
-//function playGame(num)
-
-//function numberOfRounds()
-/* {
-    let rounds=NaN;
-    while(Number.isNaN(rounds))
-        {
-            rounds = parseInt(prompt('Specify number of rounds to play!'));
-            console.log(Number.isNaN(rounds));
-        }
-    return rounds;
-}
-playGame(numberOfRounds()); */
